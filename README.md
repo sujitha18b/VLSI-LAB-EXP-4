@@ -51,90 +51,167 @@ STEP:11  On the board, by giving required input, the LEDs starts to glow light, 
 
 # VERILOG CODE
 # SR FLIPFLOP 
-module sr_ff(clk,q,rst,s,r);
+module sr_ff(clk,q,rst,s,r); 
+
 input s,r,clk,rst;
+
 output reg q;
+
 always@(posedge clk)
+
 begin
+
 if(rst==1)
+
 q=1'b0;
+
 else
+
 begin
+
 case({s,r})
+
 2'b00:q=q;
+
 2'b01:q=1'b0;
+
 2'b10:q=1'b1;
+
 2'b11:q=1'bx;
+
 endcase
+
 end
+
 end
+
 endmodule
+
 # JK FLIPFLOP 
 
 module jk_ff(clk,q,rst,j,k);
+
 input j,k,clk,rst;
+
 output reg q;
+
 always@(posedge clk)
+
 begin
+
 if(rst==1)
+
 q=1'b0;
+
 else
+
 begin
+
 case({j,k})
+
 2'b00:q=q;
+
 2'b01:q=1'b0;
+
 2'b10:q=1'b1;
+
 2'b11:q=~q;
+
 endcase
+
 end
+
 end
+
 endmodule
 # T FLIPFLOP 
 module t_ff(clk,q,rst,t);
+
 input t,clk,rst;
+
 output reg q;
+
 always@(posedge clk)
+
 begin
+
 if(rst==1)
+
 q=1'b0;
+
 else
+
 if(t==0)
+
 q=q;
+
 else
+
 q=~q;
+
 end
+
 endmodule
+
 # D FLIPFLOP 
 module d_ff(clk,q,rst,d);
+
 input d,clk,rst;
+
 output reg q;
+
 always@(posedge clk)
+
 begin
+
 if(rst==1)
+
 q=1'b0;
+
 else
+
 q=d;
+
 end
+
 endmodule
+
 # MOD 10 COUNTER 
 module mod_10(clk,rst,out);
+
 input clk,rst;
+
 output reg[3:0]out;
+
 always@(posedge clk)
+
 begin
+
 if(rst==1|out==9)
+
 out=4'b0;
+
 else
+
 out=out+1;
+
 end
+
 endmodule
+
 # UPDOWN COUNTER
 module updown_counter(clk,rst,ud,out);
+
 input clk,rst,ud; 
+
 output reg[3:0]out;
+
 always@(posedge clk) begin if(rst==1) out=4'b0; else if (ud==1) out=out+1;
+
 else if(ud==0) out=out-1;
+
 end endmodule
+
 # OUTPUT WAVEFORM
 # SR FLIP FLOP 
 ![image](https://github.com/sujitha18b/VLSI-LAB-EXP-4/assets/161813783/dc460fda-88d4-4709-beef-a1214eda0b5f).
